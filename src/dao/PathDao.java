@@ -14,6 +14,7 @@ import bean.Path;
 import bean.TimeNode;
 import bean.TimePath;
 
+//该类负责路径的生成和初始化
 public class PathDao {
 
 	private static CSVReader csvReader;
@@ -142,7 +143,9 @@ public class PathDao {
 	public static void main(String[] args) {
 		Path path = PathDao
 				.createPath("E:/中国软件杯/1_20160318100328_gjaaw/坐标点信息1(不含时间).csv");
-		System.out.print(path);
+		Path path2 = PathDao
+				.createPath("E:/中国软件杯/1_20160318100328_gjaaw/坐标点信息2(不含时间).csv");
+		// System.out.print(path);
 		System.out.println("path length:" + path.getLength());
 		System.out.println("path long_max:" + path.getMaxLongitude());
 		System.out.println("path long_min:" + path.getMinLongitude());
@@ -151,13 +154,16 @@ public class PathDao {
 
 		TimePath timePath = PathDao
 				.createTimePath("E:/中国软件杯/1_20160318100328_gjaaw/坐标点信息1(含时间).csv");
-		System.out.print(timePath);
+		TimePath timePath2 = PathDao
+				.createTimePath("E:/中国软件杯/1_20160318100328_gjaaw/坐标点信息2(含时间).csv");
+		// System.out.print(timePath);
 		System.out.println("timePath length:" + timePath.getLength());
 		System.out.println("timePath long_max:" + timePath.getMaxLongitude());
 		System.out.println("timePath long_min:" + timePath.getMinLongitude());
 		System.out.println("timePath lat_max:" + timePath.getMaxLatitude());
 		System.out.println("timePath lat_min:" + timePath.getMinLatitude());
-		
-		PathController.comparePath(path, path);
+
+		PathController.comparePath(path, path2);
+		PathController.compareTimePath(timePath, timePath2);
 	}
 }

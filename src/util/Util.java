@@ -23,12 +23,17 @@ public class Util {
 		return date.getTime();
 	}
 	
+	public static String timeToString(Long time){
+		Date date = new Date(time);
+		return date.toString();
+	}
 	/**
 	 * test function
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		System.out.println(Util.timeToLong("2015/6/21  10:47:00"));
-		System.out.println(Util.timeToLong("2015/6/21  12:59:00"));
+		System.out.println(Util.timeToLong("2015/6/21  10:00:00"));
+		System.out.println(Util.timeToString(Long.parseLong("1434862740000")));
 	}
 }
