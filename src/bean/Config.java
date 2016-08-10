@@ -17,8 +17,8 @@ public class Config {
 	public static int TIME_ACCRACY = 10000;
 	
 	//相似精度，即相似范围
-	public static int LONG_SIM_ACCURACY = 20;
-	public static int LAT_SIM_ACCURACY = 20;
+	public static int LONG_SIM_ACCURACY = 40;
+	public static int LAT_SIM_ACCURACY = 40;
 	public static int LONG_TIME_SIM_ACCURACY = 20;
 	public static int LAT_TIME_SIM_ACCURACY = 20;
 	public static int TIME_SIM_ACCURACY = 1000;

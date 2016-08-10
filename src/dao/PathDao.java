@@ -120,7 +120,7 @@ public class PathDao {
 					lat_min = latitude;
 				}
 				timeNode = new TimeNode(id++, longitude, latitude,
-						Util.timeToLong(row[2]));
+						Util.timeToLong(row[2]), row[2]);
 				nodes.add(timeNode);
 			}
 		} catch (Exception e) {
