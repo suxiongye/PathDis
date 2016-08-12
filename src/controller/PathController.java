@@ -1,6 +1,11 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import bean.Config;
 import bean.Node;
@@ -17,6 +22,100 @@ public class PathController {
 
 	// 时间路径数组
 	private static int[][][] timePathArray = null;
+
+	/**
+	 * 比较多路径，返回最相似路径
+	 * 
+	 * @param path
+	 * @param paths
+	 * @return
+	 */
+	public static SimilarPath comparePaths(Path path,
+			HashMap<String, Path> paths) {
+		initPathArray(path);
+		// 相似度列表
+		HashMap<String, Double> simMap = new HashMap<String, Double>();
+		SimilarPath similarPath = null;
+		// 最大相似路径
+		SimilarPath mostPath = null;
+		Double mostSim = 0.0;
+
+		// 循环比较
+		for (Entry<String, Path> p : paths.entrySet()) {
+			similarPath = findSimPath(path, p.getValue());
+			Double sim = similarPath.calculateSim();
+			// 存储最大路径
+			if (sim > mostSim) {
+				mostSim = sim;
+				mostPath = similarPath;
+				mostPath.setMostPath(p.getValue());
+			}
+
+			simMap.put(p.getKey(), sim);
+		}
+		// 排序
+		Comparator<Entry<String, Double>> comparator = new Comparator<Map.Entry<String, Double>>() {
+			@Override
+			public int compare(Entry<String, Double> o1,
+					Entry<String, Double> o2) {
+				// TODO Auto-generated method stub
+				return Double.compare(o2.getValue(), o1.getValue());
+			}
+		};
+		ArrayList<Map.Entry<String, Double>> simList = new ArrayList<Map.Entry<String, Double>>(
+				simMap.entrySet());
+		Collections.sort(simList, comparator);
+		mostPath.setSimList(simList);
+
+		return mostPath;
+	}
+
+	/**
+	 * 比较多条时间路径
+	 * 
+	 * @param timePath
+	 * @param timePaths
+	 * @return
+	 */
+	public static SimilarPath compareTimePaths(TimePath timePath,
+			HashMap<String, TimePath> timePaths) {
+		initTimePathArray(timePath);
+		// 相似度列表
+		HashMap<String, Double> simMap = new HashMap<String, Double>();
+		SimilarPath similarPath = null;
+		// 最大相似路径
+		SimilarPath mostPath = null;
+		Double mostSim = 0.0;
+
+		// 循环比较
+		for (Entry<String, TimePath> p : timePaths.entrySet()) {
+			similarPath = findSimTimePath(timePath, p.getValue());
+			Double sim = similarPath.calculateSim();
+			// 存储最大路径
+			if (sim > mostSim) {
+				mostSim = sim;
+				mostPath = similarPath;
+				mostPath.setMostTimePath(p.getValue());
+			}
+			simMap.put(p.getKey(), sim);
+		}
+		// 排序
+		Comparator<Entry<String, Double>> comparator = new Comparator<Map.Entry<String, Double>>() {
+			@Override
+			public int compare(Entry<String, Double> o1,
+					Entry<String, Double> o2) {
+				// TODO Auto-generated method stub
+				return Double.compare(o2.getValue(), o1.getValue());
+			}
+		};
+		ArrayList<Map.Entry<String, Double>> simList = new ArrayList<Map.Entry<String, Double>>(
+				simMap.entrySet());
+		Collections.sort(simList, comparator);
+		mostPath.setSimList(simList);
+
+		return mostPath;
+
+	}
 
 	/**
 	 * 比较源路径和目标路径
@@ -185,13 +284,15 @@ public class PathController {
 				if (nodes_sim.get(i - 1).getId() + 1 == nodes_sim.get(i)
 						.getId()) {
 					temp_length++;
-					if(temp_length > max_length) max_length = temp_length;
+					if (temp_length > max_length)
+						max_length = temp_length;
 				} else {
 					temp_length = 1;
 				}
 			}
 		}
-		if(nodes_sim.size()==0) temp_length = 0;
+		if (nodes_sim.size() == 0)
+			temp_length = 0;
 		SimilarPath simPath = new SimilarPath(nodes_sim, nodes_sim.size(),
 				max_length, nodes.size());
 		System.out.println(nodes_sim.size() + " " + max_length);
@@ -369,4 +470,5 @@ public class PathController {
 
 		return time_source;
 	}
+
 }

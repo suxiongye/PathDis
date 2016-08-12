@@ -3,12 +3,17 @@ package bean;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 //具有相似度的路径部分
 public class SimilarPath {
 	// 相似节点，用于前台输出
 	private List<Node> nodes;
 	private ArrayList<TimeNode> timeNodes;
+	// 相似度列表
+	private ArrayList<Map.Entry<String, Double>> simList;
+	private Path mostPath;
+	private TimePath mostTimePath;
 
 	// 相似路径点个数
 	private int simNum;
@@ -94,14 +99,38 @@ public class SimilarPath {
 	public String toString() {
 		// TODO Auto-generated method stub
 		String out = "";
-		if(nodes != null)
-		for (Node node : nodes) {
-			out += node.toString() + "\n";
-		}
-		if(timeNodes != null)
+		if (nodes != null)
+			for (Node node : nodes) {
+				out += node.toString() + "\n";
+			}
+		if (timeNodes != null)
 			for (TimeNode node : timeNodes) {
 				out += node.toString() + "\n";
 			}
 		return out;
+	}
+
+	public Path getMostPath() {
+		return mostPath;
+	}
+
+	public void setMostPath(Path mostPath) {
+		this.mostPath = mostPath;
+	}
+
+	public TimePath getMostTimePath() {
+		return mostTimePath;
+	}
+
+	public void setMostTimePath(TimePath mostTimePath) {
+		this.mostTimePath = mostTimePath;
+	}
+
+	public ArrayList<Map.Entry<String, Double>> getSimList() {
+		return simList;
+	}
+
+	public void setSimList(ArrayList<Map.Entry<String, Double>> simList) {
+		this.simList = simList;
 	}
 }
