@@ -68,7 +68,7 @@
 		<div class="container">
 			<div class="head">
 				<div class="logo">
-					<a href="index.html"><img src="images/logo.png" alt="" /></a>
+					<a href="<%=basePath%>index"><img src="images/logo.png" alt="" /></a>
 				</div>
 				<div class="navigation">
 					<span class="menu"></span>

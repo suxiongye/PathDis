@@ -312,12 +312,12 @@ th {
 		<div class="container">
 			<div class="head">
 				<div class="logo">
-					<a href="index.html"><img src="images/logo.png" alt="" /></a>
+					<a href="<%=basePath%>index"><img src="images/logo.png" alt="" /></a>
 				</div>
 				<div class="navigation">
 					<span class="menu"></span>
 					<ul class="navig">
-						<li><a href="<%=basePath%>index" class="hvr-bounce-to-bottom">轨迹展示</a></li>
+						<li><a href="<%=basePath%>show" class="hvr-bounce-to-bottom">轨迹展示</a></li>
 						<li><a href="<%=basePath%>like" class="hvr-bounce-to-bottom">轨迹相似度计算</a></li>
 						<li><a href="<%=basePath%>query"
 							class="active hvr-bounce-to-bottom">相似轨迹查询</a></li>
