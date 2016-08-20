@@ -41,6 +41,9 @@
 	margin: 0, auto;
 	text-align: center;
 	font-family: "微软雅黑";
+	-moz-border-radius: 30px; 
+    -webkit-border-radius: 30px; 
+    border-radius:30px;         
 }
 
 td {
@@ -319,8 +322,8 @@ th {
 					<ul class="navig">
 						<li><a href="<%=basePath%>show" class="hvr-bounce-to-bottom">轨迹展示</a></li>
 						<li><a href="<%=basePath%>like" class="hvr-bounce-to-bottom">轨迹相似度计算</a></li>
-						<li><a href="<%=basePath%>query"
-							class="active hvr-bounce-to-bottom">相似轨迹查询</a></li>
+						<li><a href="<%=basePath%>query" class="active hvr-bounce-to-bottom">相似轨迹查询</a></li>
+						<li><a href="<%=basePath%>index" class="hvr-bounce-to-bottom">系统设置</a></li>
 
 					</ul>
 				</div>
@@ -338,7 +341,7 @@ th {
 	</script>
 	<!-- script-for-menu -->
 	<!--start-banner-->
-	<form id="form1" name="uploadForm" action="" method="post"
+	<form id="form1" class="formheight" name="uploadForm" action="" method="post"
 		enctype="multipart/form-data">
 		<div class="banner bquery">
 			<div class="container">
@@ -459,8 +462,12 @@ th {
 				<h3>第五届中国软件杯</h3>
 			</div>
 			<div class="touch-bottom">
-				<img src="images/dm.png" alt="" />
+				<img src="images/logo-web.png" width="20%" alt="" />
 
+			</div>
+			<div class="footer-link">
+				<h5>源代码请点击→<a href="http://github.com">Github</a>,欢迎指导</h5>
+				
 			</div>
 		</div>
 

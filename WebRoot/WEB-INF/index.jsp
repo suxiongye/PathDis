@@ -19,7 +19,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>轨迹展示</title>
+<title>系统设置</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -82,9 +82,10 @@
 					<span class="menu"></span>
 					<ul class="navig">
 						<li><a href="<%=basePath%>show"
-							class="active hvr-bounce-to-bottom">轨迹展示</a></li>
+							class="hvr-bounce-to-bottom">轨迹展示</a></li>
 						<li><a href="<%=basePath%>like" class="hvr-bounce-to-bottom">轨迹相似度计算</a></li>
 						<li><a href="<%=basePath%>query" class="hvr-bounce-to-bottom">相似轨迹查询</a></li>
+						<li><a href="<%=basePath%>index" class="active hvr-bounce-to-bottom">系统设置</a></li>
 
 					</ul>
 				</div>
@@ -104,37 +105,37 @@
 	<!-- script-for-menu -->
 	<!--start-banner-->
 
-	<form id="form1" name="uploadForm" action="" method="post"
+	<form id="form1" class="formheight-set" name="uploadForm" action="" method="post"
 		enctype="multipart/form-data">
-		<div class="banner bhome">
+		<div class="banner bset">
 			<div class="container">
-				<div class="banner-top">
+				<div class="banner-top-set">
 					<h1>设置（建议值：0-10000）</h1>
 					<div class="banner-bottom">
 						<div class="bnr-one">
-							<div class="bnr-left">
+							<div class="bnr-left-set">
 								<p>不带时间轨迹经度范围</p>
 							</div>
-							<div class="bnr-right" style="position:relative;">
+							<div class="bnr-right-set" style="position:relative;">
 								<input type="text" id="long_acc" value="<%=long_acc%>" />
 							</div>
 							<div class="clearfix"></div>
 						</div>
 						<div class="bnr-one">
-							<div class="bnr-left">
+							<div class="bnr-left-set">
 								<p>不带时间轨迹纬度范围</p>
 							</div>
-							<div class="bnr-right" style="position:relative;">
+							<div class="bnr-right-set" style="position:relative;">
 								<input type="text" id="lat_acc" value="<%=lat_acc%>" />
 							</div>
 							<div class="clearfix"></div>
 						</div>
 						<div class="clearfix"></div>
 						<div class="bnr-one">
-							<div class="bnr-left">
+							<div class="bnr-left-set">
 								<p>带时间轨迹经度范围</p>
 							</div>
-							<div class="bnr-right" style="position:relative;">
+							<div class="bnr-right-set" style="position:relative;">
 								<input type="text" id="long_time_acc"
 									value="<%=long_time_acc%>" />
 							</div>
@@ -142,20 +143,20 @@
 						</div>
 						<div class="clearfix"></div>
 						<div class="bnr-one">
-							<div class="bnr-left">
+							<div class="bnr-left-set">
 								<p>带时间轨迹纬度范围</p>
 							</div>
-							<div class="bnr-right" style="position:relative;">
+							<div class="bnr-right-set" style="position:relative;">
 								<input type="text" id="lat_time_acc" value="<%=lat_time_acc%>" />
 							</div>
 							<div class="clearfix"></div>
 						</div>
 						<div class="clearfix"></div>
 						<div class="bnr-one">
-							<div class="bnr-left">
+							<div class="bnr-left-set">
 								<p>带时间轨迹时间范围</p>
 							</div>
-							<div class="bnr-right" style="position:relative;">
+							<div class="bnr-right-set" style="position:relative;">
 								<input type="text" id="time_acc" value="<%=time_acc%>" />
 							</div>
 							<div class="clearfix"></div>
@@ -163,7 +164,7 @@
 						<div class="clearfix"></div>
 					</div>
 
-					<div class="bnr-btn">
+					<div class="bnr-btn-set">
 
 						<input id="config" type="button" value="设置">
 
@@ -173,7 +174,7 @@
 		</div>
 	</form>
 	<!--end-banner-->
-
+	
 	<div>
 		<!--FlexSlider-->
 
@@ -198,10 +199,15 @@
 				<h3>第五届中国软件杯</h3>
 			</div>
 			<div class="touch-bottom">
-				<img src="images/dm.png" alt="" />
+				<img src="images/logo-web.png" width="20%" alt="" />
 
 			</div>
+			<div class="footer-link">
+				<h5>源代码请点击→<a href="http://github.com">Github</a>,欢迎指导</h5>
+				
+			</div>
 		</div>
+		
 	</div>
 
 	<!--end-footer-->
