@@ -35,8 +35,7 @@
 	src="http://api.map.baidu.com/library/CurveLine/1.5/src/CurveLine.min.js"></script>
 <style type="text/css">
 #allmap {
-	width: 1500px;
-	height: 500px;
+	height: 83%;
 	overflow: hidden;
 	margin: 0, auto;
 	text-align: center;
@@ -385,7 +384,7 @@ th {
 						<div class="clearfix"></div>
 					</div>
 					<div class="bnr-btn">
-						<input id="upload" type="button" value="上传">
+						<input id="upload" type="button" class="btn btn-default" value="上传">
 					</div>
 				</div>
 			</div>
@@ -466,7 +465,7 @@ th {
 
 			</div>
 			<div class="footer-link">
-				<h5>源代码请点击→<a href="http://github.com">Github</a>,欢迎指导</h5>
+				<h5>源代码请点击→<a href="https://github.com/suxiongye/PathDis">Github</a>,欢迎指导</h5>
 				
 			</div>
 		</div>

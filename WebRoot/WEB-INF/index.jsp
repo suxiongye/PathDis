@@ -110,7 +110,7 @@
 		<div class="banner bset">
 			<div class="container">
 				<div class="banner-top-set">
-					<h1>设置（建议值：0-10000）</h1>
+					<h1>设置（0~100→高精度匹配 1000及以上→低精度匹配）</h1>
 					<div class="banner-bottom">
 						<div class="bnr-one">
 							<div class="bnr-left-set">
@@ -166,7 +166,7 @@
 
 					<div class="bnr-btn-set">
 
-						<input id="config" type="button" value="设置">
+						<input id="config" type="button" class="btn btn-primary" value="设置">
 
 					</div>
 				</div>
@@ -203,7 +203,7 @@
 
 			</div>
 			<div class="footer-link">
-				<h5>源代码请点击→<a href="http://github.com">Github</a>,欢迎指导</h5>
+				<h5>源代码请点击→<a href="https://github.com/suxiongye/PathDis">Github</a>,欢迎指导</h5>
 				
 			</div>
 		</div>

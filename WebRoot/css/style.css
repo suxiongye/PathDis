@@ -247,7 +247,7 @@ ul.navig li a.active{
 	float:left;
 }
 .bset{
-	background:url(../images/setbg.jpg) no-repeat;
+	background:url(../images/haleihuixing.jpg) no-repeat;
 	background-size:100%;
 }
 .blike{
@@ -259,7 +259,7 @@ ul.navig li a.active{
 .banner-top {
 	position: absolute;
 	width:100%;
-	padding: 2em 30px;
+	padding:5%;
 	background: ;
 	top: 0px;
 	left: 0px;
@@ -496,7 +496,7 @@ select {
 .formheight {
     height: 600px;
     float:left;
-    width:470px;
+    width:30%;
 }
 .formheight-set {
     height: 670px;
@@ -785,6 +785,9 @@ select {
 	background:#ededed;
 	height:670px;
 }
+.mapshow{
+	height:600px;
+}
 .news-top{
 	text-align:center;
 }
@@ -811,14 +814,15 @@ select {
 }
 
 .bordered {
-	margin:10px auto;
+	margin:10px 33%;
     border: solid #ccc 1px;
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
     -webkit-box-shadow: 0 1px 1px #ccc; 
     -moz-box-shadow: 0 1px 1px #ccc; 
-    box-shadow: 0 1px 1px #ccc;         
+    box-shadow: 0 1px 1px #ccc;
+    width:65%;         
 }
 
 .th1 {
@@ -1013,9 +1017,13 @@ h3.ghj {
 .banner {
 	min-height: 635px;
 }
+.mapshow{
+	height:530px;
+}
 .why,.how,.secure,.news,.events,.about,
 .services,.additional,.pages,.contact {
-	padding: 5em 0px;
+	padding: 3em 0px;
+	height:635px;
 }	
 .banner-top {SS
 	left: 10%;
@@ -1034,16 +1042,14 @@ table {
 
 
 }
-@media (max-width:1366px){
-.banner-top {
-	left: 8%;
-	width: 37%;
-}	
-}
+
 @media (max-width:1280px){
 .logo a img {
 	width: 95%;
-}	
+}
+.mapshow{
+	height:490px;
+}
 .contact-bottom {
   margin-top: 3%;
 }
@@ -1071,15 +1077,13 @@ ul.navig li a {
 .banner {
 	min-height: 600px;
 }
-.banner-top {
-	left: 4%;
-	width: 38%;
-}
+
 .heading h3,h3.ghj {
 	font-size: 2.4em;
 }
 .why, .how, .secure, .news, .events, .about, .services, .additional, .pages, .contact {
-	padding: 4em 0px;
+	padding: 2.5em 0px;
+	height:600px;
 }
 .why-bottom {
 	margin-top: 3%;
@@ -1127,10 +1131,7 @@ select {
 	padding: 6px 0px 6px 10px;
 	width: 99%;
 }
-.banner-top {
-	padding: 1.8em 30px;
-	top: 18.5%;
-}
+
 .banner {
 	min-height: 510px;
 }
@@ -1142,7 +1143,7 @@ select {
 }
 .why, .how, .secure, .news, .events, .about, .services,
  .additional, .pages, .contact {
-	padding: 3.5em 0px;
+	padding: 2em 0px;
 }
 .why-left p {
 	margin-top: 0%;

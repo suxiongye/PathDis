@@ -32,15 +32,13 @@
 	src="http://api.map.baidu.com/library/CurveLine/1.5/src/CurveLine.min.js"></script>
 <style type="text/css">
 #allmap {
-	width: 1000px;
-	height: 600px;
 	overflow: hidden;
 	margin: 0, auto;
 	text-align: center;
 	font-family: "微软雅黑";
-	-moz-border-radius: 30px; 
-    -webkit-border-radius: 30px; 
-    border-radius:30px;         
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
 }
 </style>
 
@@ -155,8 +153,8 @@
 	<!-- script-for-menu -->
 	<!--start-banner-->
 
-	<form id="form1" class="formheight" name="uploadForm" action="" method="post"
-		enctype="multipart/form-data">
+	<form id="form1" class="formheight" name="uploadForm" action=""
+		method="post" enctype="multipart/form-data">
 		<div class="banner bhome">
 			<div class="container">
 				<div class="banner-top">
@@ -189,9 +187,7 @@
 						<div class="clearfix"></div>
 					</div>
 					<div class="bnr-btn">
-
-						<input id="upload" type="button" value="上传">
-
+						<input id="upload" type="button" class="btn btn-default" value="上传">
 					</div>
 				</div>
 			</div>
@@ -220,11 +216,15 @@
 	<div class="news" id="news">
 		<div class="">
 			<div class="news-top heading">
+
 				<h3>轨迹展示</h3>
+
 			</div>
-			<center>
-				<div id="allmap"></div>
-			</center>
+			<div>
+				<center>
+					<div id="allmap" class="mapshow"></div>
+				</center>
+			</div>
 
 		</div>
 	</div>
@@ -241,8 +241,10 @@
 
 			</div>
 			<div class="footer-link">
-				<h5>源代码请点击→<a href="http://github.com">Github</a>,欢迎指导</h5>
-				
+				<h5>
+					源代码请点击→<a href="https://github.com/suxiongye/PathDis">Github</a>,欢迎指导
+				</h5>
+
 			</div>
 		</div>
 	</div>
