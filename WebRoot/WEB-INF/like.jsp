@@ -172,13 +172,6 @@
 						for (p in path1) {
 							var point = new BMap.Point(path1[p].longitude,
 									path1[p].latitude);
-							var marker = new BMap.Marker(point);
-							map.addOverlay(marker);
-							var label = new BMap.Label(path1[p].timeStr, {
-								offset : new BMap.Size(20, -10)
-							});
-							marker.setLabel(label);
-
 							points1.push(point);
 						}
 						var polyline = new BMap.Polyline(points1, {
@@ -192,12 +185,6 @@
 						for (p in path2) {
 							var point = new BMap.Point(path2[p].longitude,
 									path2[p].latitude);
-							var marker = new BMap.Marker(point);
-							map.addOverlay(marker);
-							var label = new BMap.Label(path2[p].timeStr, {
-								offset : new BMap.Size(20, -10)
-							});
-							marker.setLabel(label);
 							points2.push(point);
 						}
 						var polyline2 = new BMap.Polyline(points2, {
@@ -216,6 +203,10 @@
 									tracks[p].latitude);
 							var marker = new BMap.Marker(point);
 							map.addOverlay(marker);
+							var label = new BMap.Label(tracks[p].timeStr, {
+								offset : new BMap.Size(20, -10)
+							});
+							marker.setLabel(label);
 							//如果路径的id是连续的，则保存
 							if (tracks[p].id == temp_id + 1) {
 								points3.push(point);
