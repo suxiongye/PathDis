@@ -105,7 +105,7 @@ public class LikeServlet extends HttpServlet {
 				req.setAttribute("nodes2", JSON.toJSON(nodes2).toString());
 				req.setAttribute("tracks", JSON.toJSON(nodes_sim).toString());
 				req.setAttribute("similar", new Double(
-						path_sim.calculateSim() * 100).toString());
+						path_sim.calculateSim()).toString());
 
 			} else if (type == 1) {
 				TimePath timePath1 = PathDao.createTimePath(dirPath + fileName);
@@ -120,7 +120,7 @@ public class LikeServlet extends HttpServlet {
 				req.setAttribute("nodes2", JSON.toJSON(timeNodes2).toString());
 				req.setAttribute("tracks", JSON.toJSON(time_nodes_sim).toString());
 				req.setAttribute("similar", new Double(
-						path_sim.calculateSim() * 100).toString());
+						path_sim.calculateSim()).toString());
 			}
 
 			req.setAttribute("type", type);

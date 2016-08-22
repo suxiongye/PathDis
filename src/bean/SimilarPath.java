@@ -83,7 +83,7 @@ public class SimilarPath {
 		// 计算连续长度相似度
 		double node_length_sim = (double) maxLength / (double) nodes_all;
 		node_length_sim = node_length_sim * Config.MAX_LENGTH_SIM;
-		return new BigDecimal(node_sim + node_length_sim).setScale(4,
+		return new BigDecimal((node_sim + node_length_sim)*100).setScale(4,
 				BigDecimal.ROUND_HALF_UP).doubleValue();
 	}
 

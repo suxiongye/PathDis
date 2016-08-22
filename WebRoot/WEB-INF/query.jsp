@@ -433,7 +433,7 @@ th {
 					<tr>
 						<td><%=++i%></td>
 						<td><%=entry.getKey()%></td>
-						<td><%=entry.getValue() * 100%>%</td>
+						<td><%=entry.getValue()%>%</td>
 					</tr>
 					<%
 						}
