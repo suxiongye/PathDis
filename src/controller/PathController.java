@@ -192,9 +192,9 @@ public class PathController {
 		}
 		SimilarPath simPath = new SimilarPath(nodes_sim, nodes_sim.size(),
 				max_length, nodes.size());
-		System.out.println(nodes_sim.size() + " " + max_length);
-		System.out.println(simPath.calculateSim());
-		System.out.println(simPath);
+		//System.out.println(nodes_sim.size() + " " + max_length);
+		//System.out.println(simPath.calculateSim());
+		//System.out.println(simPath);
 		return simPath;
 	}
 
@@ -295,9 +295,9 @@ public class PathController {
 			temp_length = 0;
 		SimilarPath simPath = new SimilarPath(nodes_sim, nodes_sim.size(),
 				max_length, nodes.size());
-		System.out.println(nodes_sim.size() + " " + max_length);
-		System.out.println(simPath.calculateSim());
-		System.out.println(simPath);
+		//System.out.println(nodes_sim.size() + " " + max_length);
+		//System.out.println(simPath.calculateSim());
+		//System.out.println(simPath);
 		return simPath;
 	}
 

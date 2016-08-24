@@ -18,7 +18,13 @@ public class Util {
 			date = simpleDateFormat.parse(time);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				date = simpleDateFormat.parse(time);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		return date.getTime();
 	}
@@ -32,7 +38,7 @@ public class Util {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println(Util.timeToLong("2015/6/21  10:47:00"));
+		System.out.println(Util.timeToLong("2016/8/24 1:38:29"));
 		System.out.println(Util.timeToLong("2015/6/21  10:00:00"));
 		System.out.println(Util.timeToString(Long.parseLong("1434862740000")));
 	}

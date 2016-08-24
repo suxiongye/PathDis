@@ -11,6 +11,7 @@
 	String path2 = (String) request.getAttribute("nodes2");
 	String tracks = (String) request.getAttribute("tracks");
 	Integer type = (Integer) request.getAttribute("type");
+	String excTime = (String)request.getAttribute("excTime");
 %>
 
 <html>
@@ -40,10 +41,21 @@
 	margin: 0, auto;
 	text-align: center;
 	font-family: "微软雅黑";
-	-moz-border-radius: 30px; 
-    -webkit-border-radius: 30px; 
-    border-radius:30px;         
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
 }
+
+#resultdiv {
+	height: 500px;
+	overflow-y: scroll;
+}
+
+#data-table {
+	margin-left: 300px;
+}
+
+
 
 td {
 	text-align: center;
@@ -93,18 +105,21 @@ th {
 																			$(
 																					"#allfiles")
 																					.val().length - 1));
-											alert($("#allfiles").val());
+											//alert($("#allfiles").val());
 										});
 
 						$("#show").click(function(event) {
 
 							$("#mapdiv").show();
 							$("#resultdiv").hide();
+							$("#show-info-btn").hide();
+							
 						});
 						$("#close").click(function(event) {
 
 							$("#mapdiv").hide();
 							$("#resultdiv").show();
+							$("#show-info-btn").show();
 						});
 
 					});
@@ -229,7 +244,7 @@ th {
 						for (p in path1) {
 							var point = new BMap.Point(path1[p].longitude,
 									path1[p].latitude);
-							
+
 							var label = new BMap.Label(path1[p].timeStr, {
 								offset : new BMap.Size(20, -10)
 							});
@@ -246,7 +261,7 @@ th {
 						for (p in path2) {
 							var point = new BMap.Point(path2[p].longitude,
 									path2[p].latitude);
-							
+
 							points2.push(point);
 						}
 						var polyline2 = new BMap.Polyline(points2, {
@@ -317,9 +332,11 @@ th {
 					<ul class="navig">
 						<li><a href="<%=basePath%>show" class="hvr-bounce-to-bottom">轨迹展示</a></li>
 						<li><a href="<%=basePath%>like" class="hvr-bounce-to-bottom">轨迹相似度计算</a></li>
-						<li><a href="<%=basePath%>query" class="active hvr-bounce-to-bottom">相似轨迹查询</a></li>
+						<li><a href="<%=basePath%>query"
+							class="active hvr-bounce-to-bottom">相似轨迹查询</a></li>
 						<li><a href="<%=basePath%>index" class="hvr-bounce-to-bottom">系统设置</a></li>
-
+						<li><a href="<%=basePath%>history"
+							class="hvr-bounce-to-bottom">历史记录</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -336,8 +353,8 @@ th {
 	</script>
 	<!-- script-for-menu -->
 	<!--start-banner-->
-	<form id="form1" class="formheight" name="uploadForm" action="" method="post"
-		enctype="multipart/form-data">
+	<form id="form1" class="formheight" name="uploadForm" action=""
+		method="post" enctype="multipart/form-data">
 		<div class="banner bquery">
 			<div class="container">
 				<div class="banner-top">
@@ -380,7 +397,8 @@ th {
 						<div class="clearfix"></div>
 					</div>
 					<div class="bnr-btn">
-						<input id="upload" type="button" class="btn btn-default" value="上传">
+						<input id="upload" type="button" class="btn btn-default"
+							value="上传">
 					</div>
 				</div>
 			</div>
@@ -408,16 +426,28 @@ th {
 	<div class="news" id="news">
 		<div class="">
 			<div class="news-top heading">
+				<%
+					if (excTime == null) {
+				%>
 				<h3>查询结果</h3>
+				<%
+					} else {
+				%>
+				<h3>
+					查询结果（运行时间为：<%=excTime%>秒）
+				</h3>
+				<%
+					}
+				%>
 			</div>
 			<div id="mapdiv">
-					<div id="allmap" style="margin: 0 auto;" ></div>
+				<div id="allmap" style="margin: 0 auto;"></div>
 				<div class="show-btn">
 					<input id="close" type="submit" value="关闭详细信息">
 				</div>
 			</div>
 			<div id="resultdiv">
-				<table class="bordered">
+				<table class="bordered" id="data-table">
 					<thead>
 						<tr>
 							<th class="th1">#</th>
@@ -439,12 +469,13 @@ th {
 						}
 						}
 					%>
-				</table>
-				<div class="show-btn">
-					<input id="show" type="submit" value="显示详细信息">
-				</div>
-			</div>
 
+				</table>
+
+			</div>
+			<div class="show-btn" id="show-info-btn">
+				<input id="show" type="submit" value="显示详细信息">
+			</div>
 		</div>
 	</div>
 	<!--end-blog-->
@@ -461,8 +492,10 @@ th {
 
 			</div>
 			<div class="footer-link">
-				<h5>源代码请点击→<a href="https://github.com/suxiongye/PathDis">Github</a>,欢迎指导</h5>
-				
+				<h5>
+					源代码请点击→<a href="https://github.com/suxiongye/PathDis">Github</a>,欢迎指导
+				</h5>
+
 			</div>
 		</div>
 

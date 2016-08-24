@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import bean.TimeNode;
 
 import com.alibaba.fastjson.JSON;
 
+import controller.HistoryController;
 import dao.PathDao;
 
 @WebServlet("/show")
@@ -71,6 +73,7 @@ public class ShowServlet extends HttpServlet {
 			// 写入文件
 			file = new File(dirPath + fileName);
 			fileItem.write(file);
+
 			List<Node> nodes = null;
 			List<TimeNode> timeNodes = null;
 			// 返回对应类型的节点
@@ -84,7 +87,7 @@ public class ShowServlet extends HttpServlet {
 			}
 
 			req.setAttribute("type", type);
-			
+			HistoryController.addPath(fileName, new Timestamp(System.currentTimeMillis()));
 			//System.out.println(JSON.toJSON(nodes).toString());
 
 		} catch (Exception e) {

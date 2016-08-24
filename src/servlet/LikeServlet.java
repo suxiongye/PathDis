@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -91,12 +92,18 @@ public class LikeServlet extends HttpServlet {
 			List<TimeNode> timeNodes2 = null;
 			List<TimeNode> time_nodes_sim = null;
 
+			
+			
 			// 返回对应类型的节点
 			if (type == 0) {
 				Path path1 = PathDao.createPath(dirPath + fileName);
 				Path path2 = PathDao.createPath(dirPath + fileName2);
+				//计算时间
+				long startTime = System.currentTimeMillis();
 				SimilarPath path_sim = PathController.comparePath(path1, path2);
-
+				long endTime = System.currentTimeMillis();
+				Float excTime = new Float(endTime - startTime)/1000;
+				
 				nodes1 = path1.getNodes();
 				nodes2 = path2.getNodes();
 				nodes_sim = path_sim.getNodes();
@@ -106,11 +113,16 @@ public class LikeServlet extends HttpServlet {
 				req.setAttribute("tracks", JSON.toJSON(nodes_sim).toString());
 				req.setAttribute("similar", new Double(
 						path_sim.calculateSim()).toString());
+				req.setAttribute("excTime", excTime.toString());
 
 			} else if (type == 1) {
 				TimePath timePath1 = PathDao.createTimePath(dirPath + fileName);
 				TimePath timePath2 = PathDao.createTimePath(dirPath + fileName2);
+				//计算时间
+				long startTime = System.currentTimeMillis();
 				SimilarPath path_sim = PathController.compareTimePath(timePath1, timePath2);
+				long endTime = System.currentTimeMillis();
+				Float excTime = new Float(endTime - startTime)/1000;
 				
 				timeNodes1 = timePath1.getTimeNodes();
 				timeNodes2 = timePath2.getTimeNodes();
@@ -121,6 +133,7 @@ public class LikeServlet extends HttpServlet {
 				req.setAttribute("tracks", JSON.toJSON(time_nodes_sim).toString());
 				req.setAttribute("similar", new Double(
 						path_sim.calculateSim()).toString());
+				req.setAttribute("excTime", excTime.toString());
 			}
 
 			req.setAttribute("type", type);

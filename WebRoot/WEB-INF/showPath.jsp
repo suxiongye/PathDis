@@ -79,7 +79,8 @@
 						<li><a href="<%=basePath%>like" class="hvr-bounce-to-bottom">轨迹相似度计算</a></li>
 						<li><a href="<%=basePath%>query" class="hvr-bounce-to-bottom">相似轨迹查询</a></li>
 						<li><a href="<%=basePath%>index" class="hvr-bounce-to-bottom">系统设置</a></li>
-
+						<li><a href="<%=basePath%>history"
+							class="hvr-bounce-to-bottom">历史记录</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -118,6 +119,18 @@
 							for (p in path) {
 								var point = new BMap.Point(path[p].longitude,
 										path[p].latitude);
+								var marker = new BMap.Marker(point);
+								map.addOverlay(marker);
+								var label = new BMap.Label(p, {
+									offset : new BMap.Size(40, -10)
+								});
+								if(p == 0) label =  new BMap.Label("起点", {
+									offset : new BMap.Size(40, -10)
+								});
+								if(p == path.length-1) label =  new BMap.Label("终点", {
+									offset : new BMap.Size(40, -10)
+								});
+								marker.setLabel(label);
 								points.push(point);
 							}
 							var polyline = new BMap.Polyline(points, {
@@ -187,7 +200,8 @@
 						<div class="clearfix"></div>
 					</div>
 					<div class="bnr-btn">
-						<input id="upload" type="button" class="btn btn-default" value="上传">
+						<input id="upload" type="button" class="btn btn-default"
+							value="上传">
 					</div>
 				</div>
 			</div>

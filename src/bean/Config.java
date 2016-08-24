@@ -26,4 +26,12 @@ public class Config {
 	//相似度计算比例，最长相似路径和相似点总数比例
 	public static double MAX_LENGTH_SIM = 0.5;
 	public static double NODE_SIZE_SIM = 0.5;
+	
+	//数据库配置
+	public static String DB_NAME = "PathDis";
+	public static String TABLE_NAME = "path_history";
+	public static String URL = "jdbc:mysql://127.0.0.1/";
+	public static String DB_USER = "root";
+	public static String DB_PASSWORD = "root";
+	
 }

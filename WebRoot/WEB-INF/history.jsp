@@ -1,17 +1,13 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="bean.PathHistory"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-	Integer long_acc = (Integer) request.getAttribute("long_acc");
-	Integer lat_acc = (Integer) request.getAttribute("lat_acc");
-	Integer long_time_acc = (Integer) request
-			.getAttribute("long_time_acc");
-	Integer lat_time_acc = (Integer) request
-			.getAttribute("lat_time_acc");
-	Integer time_acc = (Integer) request.getAttribute("time_acc");
+	+ request.getServerName() + ":" + request.getServerPort()
+	+ path + "/";
+	ArrayList<PathHistory> pathHistories = (ArrayList<PathHistory>)request.getAttribute("histories");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,7 +15,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>系统设置</title>
+<title>历史记录</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -44,30 +40,12 @@
 	text-align: center;
 	font-family: "微软雅黑";
 }
+#resultdiv{
+	height:450px;
+  	overflow-y:scroll;
+}
 </style>
 
-<script>
-	jQuery(document).ready(
-			function($) {
-
-				$("#config").click(
-						function() {
-							var long_acc = $("#long_acc").val();
-							var lat_acc = $("#lat_acc").val();
-							var long_time_acc = $("#long_time_acc").val();
-							var lat_time_acc = $("#lat_time_acc").val();
-							var time_acc = $("#time_acc").val();
-
-							document.uploadForm.action = "index?long_acc="
-									+ long_acc + "&&lat_acc=" + lat_acc
-									+ "&&long_time_acc=" + long_time_acc
-									+ "&&lat_time_acc=" + lat_time_acc
-									+ "&&time_acc=" + time_acc;
-
-							$('#form1').submit();
-						});
-			});
-</script>
 <!--start-smoth-scrolling-->
 </head>
 <body>
@@ -84,10 +62,10 @@
 						<li><a href="<%=basePath%>show" class="hvr-bounce-to-bottom">轨迹展示</a></li>
 						<li><a href="<%=basePath%>like" class="hvr-bounce-to-bottom">轨迹相似度计算</a></li>
 						<li><a href="<%=basePath%>query" class="hvr-bounce-to-bottom">相似轨迹查询</a></li>
-						<li><a href="<%=basePath%>index"
-							class="active hvr-bounce-to-bottom">系统设置</a></li>
+						<li><a href="<%=basePath%>index" class="hvr-bounce-to-bottom">系统设置</a></li>
 						<li><a href="<%=basePath%>history"
-							class="hvr-bounce-to-bottom">历史记录</a></li>
+							class="active hvr-bounce-to-bottom">历史记录</a></li>
+
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -111,64 +89,30 @@
 		<div class="banner bset">
 			<div class="container">
 				<div class="banner-top-set">
-					<h1>设置（0~100→高精度匹配 1000及以上→低精度匹配）</h1>
-					<div class="banner-bottom">
-						<div class="bnr-one">
-							<div class="bnr-left-set">
-								<p>不带时间轨迹经度范围</p>
-							</div>
-							<div class="bnr-right-set" style="position:relative;">
-								<input type="text" id="long_acc" value="<%=long_acc%>" />
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="bnr-one">
-							<div class="bnr-left-set">
-								<p>不带时间轨迹纬度范围</p>
-							</div>
-							<div class="bnr-right-set" style="position:relative;">
-								<input type="text" id="lat_acc" value="<%=lat_acc%>" />
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="clearfix"></div>
-						<div class="bnr-one">
-							<div class="bnr-left-set">
-								<p>带时间轨迹经度范围</p>
-							</div>
-							<div class="bnr-right-set" style="position:relative;">
-								<input type="text" id="long_time_acc" value="<%=long_time_acc%>" />
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="clearfix"></div>
-						<div class="bnr-one">
-							<div class="bnr-left-set">
-								<p>带时间轨迹纬度范围</p>
-							</div>
-							<div class="bnr-right-set" style="position:relative;">
-								<input type="text" id="lat_time_acc" value="<%=lat_time_acc%>" />
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="clearfix"></div>
-						<div class="bnr-one">
-							<div class="bnr-left-set">
-								<p>带时间轨迹时间范围</p>
-							</div>
-							<div class="bnr-right-set" style="position:relative;">
-								<input type="text" id="time_acc" value="<%=time_acc%>" />
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="clearfix"></div>
-					</div>
+					<div id="resultdiv" >
+					<h1 style="text-align:center;">上传路径历史记录</h1>
+					<br><br>
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="th3">#</th>
+									<th class="th3">路径名</th>
+									<th class="th3">时间</th>
+								</tr>
+							</thead>
 
-					<div class="bnr-btn-set">
-
-						<input id="config" type="button" class="btn btn-primary"
-							value="设置">
-
+							<%
+								for(PathHistory pathHistory:pathHistories){
+							%>
+							<tr>
+								<td><%=pathHistory.getId()%></td>
+								<td><%=pathHistory.getPathName()%></td>
+								<td><%=pathHistory.getTime()%></td>
+							</tr>
+							<%
+								}
+							%>
+						</table>
 					</div>
 				</div>
 			</div>
@@ -188,6 +132,8 @@
 						$('body').removeClass('loading');
 					}
 				});
+				
+				$("tr:odd").addClass("info");
 			});
 		</script>
 	</div>

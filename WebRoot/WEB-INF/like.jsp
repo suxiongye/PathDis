@@ -9,6 +9,7 @@
 	String tracks = (String) request.getAttribute("tracks");
 	String similar = (String) request.getAttribute("similar");
 	Integer type = (Integer) request.getAttribute("type");
+	String excTime = (String)request.getAttribute("excTime");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -258,6 +259,8 @@
 							class="active hvr-bounce-to-bottom">轨迹相似度计算</a></li>
 						<li><a href="<%=basePath%>query" class="hvr-bounce-to-bottom">相似轨迹查询</a></li>
 						<li><a href="<%=basePath%>index" class="hvr-bounce-to-bottom">系统设置</a></li>
+						<li><a href="<%=basePath%>history"
+							class="hvr-bounce-to-bottom">历史记录</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -319,6 +322,7 @@
 							</select>
 						</div>
 						<div class="clearfix"></div>
+						
 					</div>
 					<div class="bnr-btn">
 						<input id="upload" type="button" class="btn btn-default" value="上传">
@@ -358,7 +362,9 @@
 				%>
 				<h3>
 					相似度:<%=similar%>
-					%
+					% 
+					<% if(excTime != null) %>
+					计算时间为：<%=excTime %> 秒
 				</h3>
 				<%
 					}

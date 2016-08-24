@@ -90,7 +90,7 @@ public class QueryServlet extends HttpServlet {
 			while (iterator.hasNext()) {
 				fileItem = (FileItem) iterator.next();
 				fileName = fileItem.getName();
-				System.out.println(fileName);
+				//System.out.println(fileName);
 				if (fileName == null || fileName.equals("")) {
 					continue;
 				}
@@ -117,24 +117,35 @@ public class QueryServlet extends HttpServlet {
 		SimilarPath mostPath = null;
 		// 比较普通路径相似度
 		if (type == 0) {
+			// 计算时间
+			long startTime = System.currentTimeMillis();
 			mostPath = PathController.comparePaths(path, dest_paths);
 			simPath = mostPath.getMostPath();
+			long endTime = System.currentTimeMillis();
+			Float excTime = new Float(endTime - startTime) / 1000;
+
 			req.setAttribute("nodes1", JSON.toJSON(path.getNodes()).toString());
 			req.setAttribute("nodes2", JSON.toJSON(simPath.getNodes())
 					.toString());
 			req.setAttribute("tracks", JSON.toJSON(mostPath.getNodes())
 					.toString());
+			req.setAttribute("excTime", excTime.toString());
 
 		} else {
+			// 计算时间
+			long startTime = System.currentTimeMillis();
 			mostPath = PathController
 					.compareTimePaths(timePath, dest_timePaths);
 			simTimePath = mostPath.getMostTimePath();
+			long endTime = System.currentTimeMillis();
+			Float excTime = new Float(endTime - startTime) / 1000;
 			req.setAttribute("nodes1", JSON.toJSON(timePath.getTimeNodes())
 					.toString());
 			req.setAttribute("nodes2", JSON.toJSON(simTimePath.getTimeNodes())
 					.toString());
 			req.setAttribute("tracks", JSON.toJSON(mostPath.getTimeNodes())
 					.toString());
+			req.setAttribute("excTime", excTime.toString());
 		}
 
 		req.setAttribute("resultList", mostPath.getSimList());
