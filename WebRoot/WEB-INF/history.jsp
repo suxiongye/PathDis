@@ -62,6 +62,8 @@
 						<li><a href="<%=basePath%>show" class="hvr-bounce-to-bottom">轨迹展示</a></li>
 						<li><a href="<%=basePath%>like" class="hvr-bounce-to-bottom">轨迹相似度计算</a></li>
 						<li><a href="<%=basePath%>query" class="hvr-bounce-to-bottom">相似轨迹查询</a></li>
+						<li><a href="<%=basePath%>mulquery"
+							class="hvr-bounce-to-bottom">多轨迹查询</a></li>
 						<li><a href="<%=basePath%>index" class="hvr-bounce-to-bottom">系统设置</a></li>
 						<li><a href="<%=basePath%>history"
 							class="active hvr-bounce-to-bottom">历史记录</a></li>

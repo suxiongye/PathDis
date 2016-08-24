@@ -16,28 +16,23 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.alibaba.fastjson.JSON;
-
-import controller.PathController;
-import dao.PathDao;
 import bean.Path;
 import bean.SimilarPath;
 import bean.TimePath;
 
-@WebServlet("/query")
-public class QueryServlet extends HttpServlet {
+import com.alibaba.fastjson.JSON;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+import controller.PathController;
+import dao.PathDao;
 
+@WebServlet("/mulquery")
+public class MulQueryServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		req.setCharacterEncoding("utf-8");
-		req.getRequestDispatcher("/WEB-INF/query.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/mulquery.jsp").forward(req, resp);
 	}
 
 	@Override
@@ -58,17 +53,17 @@ public class QueryServlet extends HttpServlet {
 
 		// 建立上传文件夹
 		String dirPath = this.getServletContext().getRealPath("/");
-		if(type == 0){
-			dirPath = dirPath + "upload\\query\\notime\\";
-		}
-		else{
-			dirPath = dirPath + "upload\\query\\time\\";
+		if (type == 0) {
+			dirPath = dirPath + "upload\\mulquery\\notime\\";
+		} else {
+			dirPath = dirPath + "upload\\mulquery\\time\\";
 		}
 		File file = new File(dirPath);
 		if (!file.exists()) {
 			file.mkdirs();
 		}
-
+		String fileName = null;
+		String fileName_t = null;
 		// 读取源路径
 		try {
 			// 上传原路径
@@ -78,12 +73,13 @@ public class QueryServlet extends HttpServlet {
 			fileItem = iterator.next();
 			// 若为空则跳转
 			if (fileItem.getName() == null || fileItem.getName().equals("")) {
-				req.getRequestDispatcher("/WEB-INF/query.jsp").forward(req,
+				req.getRequestDispatcher("/WEB-INF/mulquery.jsp").forward(req,
 						resp);
 				return;
 			}
 			// 写入文件
-			String fileName = fileItem.getName();
+			fileName = fileItem.getName();
+			fileName_t = fileName;
 			file = new File(dirPath + fileName);
 			if (!file.exists())
 				fileItem.write(file);
@@ -95,7 +91,7 @@ public class QueryServlet extends HttpServlet {
 			while (iterator.hasNext()) {
 				fileItem = (FileItem) iterator.next();
 				fileName = fileItem.getName();
-				//System.out.println(fileName);
+				// System.out.println(fileName);
 				if (fileName == null || fileName.equals("")) {
 					continue;
 				}
@@ -152,10 +148,9 @@ public class QueryServlet extends HttpServlet {
 					.toString());
 			req.setAttribute("excTime", excTime.toString());
 		}
-
+		req.setAttribute("path_source_name", fileName_t);
 		req.setAttribute("resultList", mostPath.getSimList());
 		req.setAttribute("type", type);
-		req.getRequestDispatcher("/WEB-INF/query.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/mulquery.jsp").forward(req, resp);
 	}
-
 }
